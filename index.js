@@ -14,6 +14,12 @@ server.use(express.json());
 // Array de cursos
 const cursos = ['Node.js', 'JavaScript', 'React Native'];
 
+// Requisição middleware "Global", feita independente de uma rota
+server.use((res, req, next) => {
+    console.log('Requisição efetuada!')
+    return next()
+})
+
 // Buscando todos os cursos
 server.get('/cursos', (req, res) => {
     return res.json(cursos)
